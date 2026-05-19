@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #050505;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Segoe UI', Impact, sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+/* WATERMARK RAKSASA SATU LAYAR PENUH DI PC */
+body::before {
+    content: "MS NIO EXAMPLE";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12vw; 
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.05); /* Samar & Mewah */
+    transform: rotate(-10deg); 
+    z-index: -1; 
+    pointer-events: none;
+    text-transform: uppercase;
+    letter-spacing: 15px;
+}
+
+/* MOBILE VIEW CONTAINER */
+.app-container {
+    width: 360px;
+    height: 640px;
+    background: #000;
+    border: 12px solid #1a1a1a;
+    border-radius: 45px;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; /* Smooth TikTok Scroll */
+    scrollbar-width: none;
+    position: relative;
+    z-index: 10; /* Di depan watermark */
+    box-shadow: 0 0 100px rgba(0,0,0,1);
+}
+
+.app-container::-webkit-scrollbar { display: none; }
+
+/* VIDEO CARD */
+.video-card {
+    height: 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* SIDE BAR */
+.side-bar {
+    position: absolute;
+    right: 12px;
+    bottom: 160px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 2;
+}
+
+.action-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.icon {
+    font-size: 26px;
+    background: rgba(255, 255, 255, 0.25);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+}
+
+.count { font-size: 11px; margin-top: 4px; font-weight: bold; }
+
+/* INFO OVERLAY */
+.video-info {
+    padding: 30px 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.95));
+    color: white;
+    z-index: 1;
+}
+
+.video-info h3 { font-size: 18px; margin-bottom: 5px; }
+.video-info p { font-size: 13px; opacity: 0.9; margin-bottom: 15px; }
+
+.portal-btn {
+    background: linear-gradient(45deg, #00f2fe, #4facfe);
+    border: none;
+    padding: 14px;
+    width: 100%;
+    border-radius: 12px;
+    font-weight: 900;
+    cursor: pointer;
+    text-transform: uppercase;
+}
